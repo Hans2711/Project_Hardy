@@ -123,6 +123,9 @@
   <data name="DeleteStep" xml:space="preserve">
     <value>Delete Step</value>
   </data>
+  <data name="DeletionCheck" xml:space="preserve">
+    <value>Do you really want to delete this record?</value>
+  </data>
   <data name="Department" xml:space="preserve">
     <value>Department</value>
   </data>

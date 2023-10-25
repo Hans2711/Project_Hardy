@@ -310,6 +310,27 @@ namespace Project_Hardy.Models
             return totalStepDuration;
         }
 
+        public int backtrackPrevDurations(string identifier)
+        {
+            if (identifier == "" || identifier == null)
+            {
+                return 0;
+            }
+
+            int total = 0;
+            for (int i = 0; i < stepCount; i++) 
+            {
+                if (identifier == steps[i].identifier)
+                {
+                    total += steps[i].duration;
+                    identifier = steps[i].prev_identifier;
+                    i = -1;
+                }
+            }
+            return total;
+        }
+
+
         public void properlyOrderSteps()
         {
             List<string> potentialStartingIdentifiers = new List<string>();

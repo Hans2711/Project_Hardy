@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -29,9 +30,9 @@ namespace Project_Hardy
 
         int totalHeightPixel = 400;
 
-        int verticalStepSize;
-
         int horizontalStepSize;
+
+        int verticalStepSize;
 
         int stepTotal;
 
@@ -45,21 +46,59 @@ namespace Project_Hardy
             if (project == null)
                 return;
 
-            verticalStepSize = totalWidthPixel / project.getTotalStepDuration();
+            if(project.getTotalStepDuration() == null) return;
+
+            project.properlyOrderSteps();
+
+            horizontalStepSize = totalWidthPixel / project.getTotalStepDuration();
             stepTotal = project.stepCount;
 
             setDurationScala();
 
-            horizontalStepSize = (totalHeightPixel / stepTotal);
+            verticalStepSize = (totalHeightPixel / stepTotal);
 
-            if (horizontalStepSize > 20)
+            if (verticalStepSize > 20)
             {
-                horizontalStepSize -= 10;
+                verticalStepSize -= 10;
             }
 
             setStepDescriptions();
+
+            setRectagles();
         }
 
+        private void setRectagles()
+        {
+            Brush[] brushes = new Brush[] {
+              Brushes.Red,
+              Brushes.Orange,
+              Brushes.Green,
+              Brushes.Blue,
+              Brushes.Indigo,
+            };
+
+            int i = 1;
+            int heightOffset = 0;
+            foreach (var step in project.steps)
+            {
+                Rectangle r = new Rectangle();
+                r.Width = step.duration * horizontalStepSize;
+                r.Height = objectHeight;
+
+                Random rnd = new Random();
+                r.Fill = brushes[rnd.Next(brushes.Length)];
+
+                gdCanvas.Children.Add(r);
+
+                Canvas.SetTop(r, (i * objectHeight) + heightOffset);
+                Canvas.SetLeft(r, (project.backtrackPrevDurations(step.prev_identifier) * horizontalStepSize) + 150);
+
+                i++;
+            }
+        }
+
+
+        private int objectHeight = 40;
 
         public void setStepDescriptions()
         {
@@ -67,15 +106,15 @@ namespace Project_Hardy
 
             for (int i = 1; i < stepTotal + 1; i++)
             {
-                startingPoint += horizontalStepSize;
+                startingPoint += verticalStepSize;
                 Label label = new Label();
                 label.Content = project.steps[i - 1].description + " (" + project.steps[i - 1].identifier + ")";
-                label.Height = 40;
+                label.Height = objectHeight;
                 label.Width = 130;
 
                 gdCanvas.Children.Add(label);
 
-                Canvas.SetTop(label, i * 40);
+                Canvas.SetTop(label, i * objectHeight);
                 Canvas.SetLeft(label, 20);
             }
 
@@ -88,7 +127,7 @@ namespace Project_Hardy
 
             for (int i = 1; i < project.getTotalStepDuration() * 1.5; i++)
             {
-                startingPoint += verticalStepSize;
+                startingPoint += horizontalStepSize;
                 Line line = new Line();
 
                 line.X1 = startingPoint;

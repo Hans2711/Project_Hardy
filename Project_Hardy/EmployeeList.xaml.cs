@@ -65,16 +65,25 @@ namespace Project_Hardy
         {
             if (employeesDataGrid.SelectedItems.Count > 0)
             {
-                for (int i = 0; i < employeesDataGrid.SelectedItems.Count; i++)
+                MessageBoxResult result = System.Windows.MessageBox.Show(Properties.Resources.DeletionCheck, "", MessageBoxButton.YesNo);
+                switch (result)
                 {
-                    var item = employeesDataGrid.SelectedItems[i] as Employee;
+                    case MessageBoxResult.Yes:
+                        {
+                            for (int i = 0; i < employeesDataGrid.SelectedItems.Count; i++)
+                            {
+                                var item = employeesDataGrid.SelectedItems[i] as Employee;
 
-                    item.delete();
-                    dataRepository.employees.Remove(item);
+                                item.delete();
+                                dataRepository.employees.Remove(item);
+                            }   
+                            employeesDataGrid.Items.Refresh();
+                        }
+                        break;
+                    case MessageBoxResult.No:
+                        break;
                 }
             }
-
-            employeesDataGrid.Items.Refresh();
         }
 
         private void Window_Activated(object sender, EventArgs e)

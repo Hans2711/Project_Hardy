@@ -123,6 +123,9 @@
   <data name="DeleteStep" xml:space="preserve">
     <value>Schritt löschen</value>
   </data>
+  <data name="DeletionCheck" xml:space="preserve">
+    <value>Wollen sie sicher löschen?</value>
+  </data>
   <data name="Department" xml:space="preserve">
     <value>Abteilung</value>
   </data>

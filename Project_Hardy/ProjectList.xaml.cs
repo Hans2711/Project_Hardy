@@ -70,7 +70,7 @@ namespace Project_Hardy
                     var item = projectsDataGrid.SelectedItems[i] as Project;
 
                     ProjectDetails projectDetails= new ProjectDetails();
-                    projectDetails.project= item;
+                    projectDetails.project = item;
                     projectDetails.Show();
                 }
             }
@@ -80,16 +80,25 @@ namespace Project_Hardy
         {
             if (projectsDataGrid.SelectedItems.Count > 0)
             {
-                for (int i = 0; i < projectsDataGrid.SelectedItems.Count; i++)
+                MessageBoxResult result = System.Windows.MessageBox.Show(Properties.Resources.DeletionCheck, "", MessageBoxButton.YesNo);
+                switch (result)
                 {
-                    var item = projectsDataGrid.SelectedItems[i] as Project;
+                    case MessageBoxResult.Yes:
+                        {
+                            for (int i = 0; i < projectsDataGrid.SelectedItems.Count; i++)
+                            {
+                                var item = projectsDataGrid.SelectedItems[i] as Project;
 
-                    item.delete();
-                    dataRepository.projects.Remove(item);
+                                item.delete();
+                                dataRepository.projects.Remove(item);
+                            }
+                            projectsDataGrid.Items.Refresh();
+                        }
+                        break;
+                    case MessageBoxResult.No:
+                        break;
                 }
             }
-
-            projectsDataGrid.Items.Refresh();
         }
 
         private void ganttDiagrammButton_Click(object sender, RoutedEventArgs e)

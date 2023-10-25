@@ -79,6 +79,15 @@ namespace Project_Hardy.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you really want to delete this record?.
+        /// </summary>
+        public static string DeletionCheck {
+            get {
+                return ResourceManager.GetString("DeletionCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Department.
         /// </summary>
         public static string Department {
