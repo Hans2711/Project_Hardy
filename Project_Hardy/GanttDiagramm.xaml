@@ -12,6 +12,8 @@
         <Canvas x:Name="gdCanvas" Height="500" Width="800">
             <Line x:Name="yAchse" X2="150" Y2="490" StrokeThickness="2" Stroke="Black" X1="150"></Line>
             <Line x:Name="xAchse" X2="800" Y2="400" StrokeThickness="2" Stroke="Black" Y1="400"></Line>
+            
+            <Label x:Name="description" Canvas.Bottom="60" Canvas.Left="40"></Label>
         </Canvas>
 
     </Grid>

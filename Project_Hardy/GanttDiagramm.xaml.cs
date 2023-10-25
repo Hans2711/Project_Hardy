@@ -43,6 +43,7 @@ namespace Project_Hardy
 
         private void Window_ContentRendered(object sender, EventArgs e)
         {
+            DataContext = project;
             if (project == null)
                 return;
 
@@ -65,6 +66,8 @@ namespace Project_Hardy
 
             setStepDescriptions();
             setRectagles();
+
+            description.Content = project.description;
         }
 
         private void setRectagles()
@@ -86,7 +89,7 @@ namespace Project_Hardy
                 r.Height = objectHeight;
 
                 Random rnd = new Random();
-                r.Fill = brushes[rnd.Next(brushes.Length)];
+                r.Fill = brushes[rnd.Next() % brushes.Length];
 
                 gdCanvas.Children.Add(r);
 
