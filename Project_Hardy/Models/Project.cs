@@ -1,14 +1,9 @@
-﻿using System;
+﻿using Project_Hardy.Classes;
+using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Project_Hardy.Classes;
-using System.Data.SQLite;
-using System.Windows;
-using System.Windows.Media.Animation;
-using System.Windows.Markup.Localizer;
 
 namespace Project_Hardy.Models
 {
@@ -123,9 +118,12 @@ namespace Project_Hardy.Models
             int project_manager_id = 0;
             if (this.project_manager != null)
             {
+                Console.WriteLine("WDOAIJDOIASODJAJSDOA" + this.project_manager.fullname);
+                if (string.IsNullOrEmpty(this.project_manager.fullname))
+                    return;
 
                 foreach (var employee in Employee.findAll())
-                { 
+                {
                     if (employee.firstname == project_manager.firstname && employee.surname == project_manager.surname)
                     {
                         project_manager_id = employee.id;
@@ -135,16 +133,16 @@ namespace Project_Hardy.Models
 
                 if (project_manager_id == 0)
                 {
-                    string fullname = project_manager.fullname;
-                    project_manager = new Employee();
-                    project_manager.fullname = fullname;
+                    string fullname = this.project_manager.fullname;
+                    this.project_manager = new Employee();
+                    this.project_manager.fullname = fullname;
 
-                    project_manager.persist();
+                    this.project_manager.persist();
                     project_manager_id = this.project_manager.id;
                 }
 
                 this.update("project_manager_id", project_manager_id);
-                
+
             }
         }
 
@@ -152,7 +150,6 @@ namespace Project_Hardy.Models
         {
             int project_manager_id = 0;
 
-            updateProjectManager();
 
             string sql = SQLBuilder.insert("project", "description, starttime, endtime, project_manager_id",
                 "'" + description + "', " + "" + TimestampUtility.toTimestamp(this.starttime) + ", " + TimestampUtility.toTimestamp(this.endtime) + ", " + project_manager_id + ""
@@ -174,6 +171,8 @@ namespace Project_Hardy.Models
                     id = Convert.ToInt32(res_check["id"]);
                 }
             }
+
+            updateProjectManager();
 
             foreach (var step in steps)
             {
@@ -322,7 +321,7 @@ namespace Project_Hardy.Models
             }
 
             int total = 0;
-            for (int i = 0; i < stepCount; i++) 
+            for (int i = 0; i < stepCount; i++)
             {
                 if (identifier == steps[i].identifier)
                 {
@@ -357,7 +356,8 @@ namespace Project_Hardy.Models
                 emergencyBreaker = 100;
                 stepTree(step);
 
-                if (stepTrace.Count > lastLength) {
+                if (stepTrace.Count > lastLength)
+                {
                     trace = stepTrace.ToList();
                     lastLength = stepTrace.Count;
                 }
@@ -381,7 +381,7 @@ namespace Project_Hardy.Models
             {
                 newSteps.Add(steps[i]);
             }
-           
+
             steps = newSteps;
         }
 

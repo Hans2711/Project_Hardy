@@ -1,9 +1,6 @@
-﻿using System;
+﻿using Project_Hardy.Classes;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Project_Hardy.Classes;
 using System.Data.SQLite;
 
 namespace Project_Hardy.Models
@@ -22,12 +19,16 @@ namespace Project_Hardy.Models
 
         public bool deletionMark { get; set; }
 
-        public bool is_empty { get {
+        public bool is_empty
+        {
+            get
+            {
                 return (
-                    identifier == null &&  description == null &&
+                    identifier == null && description == null &&
                     (duration == null || duration <= 0) && prev_identifier == null
-                ); 
-            } }
+                );
+            }
+        }
 
         public void persist(int project_id)
         {
@@ -59,7 +60,7 @@ namespace Project_Hardy.Models
                     while (max_id.Read())
                     {
                         if (max_id["max_id"].GetType() != typeof(DBNull))
-                        { 
+                        {
                             this.id = Convert.ToInt32(max_id["max_id"]) + 1;
                         }
                     }

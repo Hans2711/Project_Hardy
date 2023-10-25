@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Project_Hardy.Classes;
 using System.Windows;
-using Project_Hardy.Classes;
-using System.Data.SQLite;
 
 namespace Project_Hardy
 {
@@ -17,7 +10,7 @@ namespace Project_Hardy
     {
         public App()
         {
-            DBWorker.install("db.db");
+            DBWorker.install("db2.db");
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("de");
         }
     }

@@ -6,7 +6,7 @@
         xmlns:p = "clr-namespace:Project_Hardy.Properties"
         xmlns:local="clr-namespace:Project_Hardy"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.EmployeeDetails}" Height="450" Width="450" ContentRendered="Window_ContentRendered" Closing="Window_Closing" Closed="Window_Closed">
+        Title="{x:Static p:Resources.EmployeeDetails}" Height="450" Width="500" ContentRendered="Window_ContentRendered" Closing="Window_Closing" Closed="Window_Closed">
     <Grid Margin="30,0,0,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />

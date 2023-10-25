@@ -1,20 +1,8 @@
 ﻿using Project_Hardy.Models;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Markup;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace Project_Hardy
@@ -44,13 +32,12 @@ namespace Project_Hardy
         private void Window_ContentRendered(object sender, EventArgs e)
         {
             DataContext = project;
+            if (project.stepCount <= 0) return;
+
             if (project == null)
                 return;
 
-            if(project.getTotalStepDuration() == null) return;
-
             project.properlyOrderSteps();
-            Console.WriteLine(project.getTotalStepDuration());
 
             horizontalStepSize = totalWidthPixel / project.getTotalStepDuration();
             stepTotal = project.stepCount;

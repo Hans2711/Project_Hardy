@@ -1,17 +1,7 @@
 ﻿using Project_Hardy.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Project_Hardy
 {
@@ -57,7 +47,7 @@ namespace Project_Hardy
         {
             dataRepository.projects.Add(new Project());
             ProjectDetails projectsDetails = new ProjectDetails();
-            projectsDetails.project= dataRepository.projects.Last();
+            projectsDetails.project = dataRepository.projects.Last();
             projectsDetails.Show();
         }
 
@@ -69,7 +59,7 @@ namespace Project_Hardy
                 {
                     var item = projectsDataGrid.SelectedItems[i] as Project;
 
-                    ProjectDetails projectDetails= new ProjectDetails();
+                    ProjectDetails projectDetails = new ProjectDetails();
                     projectDetails.project = item;
                     projectDetails.Show();
                 }

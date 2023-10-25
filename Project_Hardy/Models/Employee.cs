@@ -1,11 +1,8 @@
-﻿using System;
+﻿using Project_Hardy.Classes;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Project_Hardy.Classes;
 using System.Data.SQLite;
-using System.ComponentModel;
+using System.Linq;
 
 namespace Project_Hardy.Models
 {
@@ -21,21 +18,35 @@ namespace Project_Hardy.Models
 
         public string phone { get; set; }
 
-        public string fullname { 
-            get {
-                if (firstname != null && surname != null)
+        public string fullname
+        {
+            get
+            {
+                if (firstname != null && firstname != "" && surname != null && surname != "")
                 {
                     return firstname + " " + surname;
                 }
+                if (firstname != null && firstname != "")
+                {
+                    return firstname;
+                }
+                if (surname != null && surname != "")
+                {
+                    return surname;
+                }
+
                 return "";
-            } set { 
-                string[] parts =  value.Split(' ');
+            }
+            set
+            {
+                string[] parts = value.Split(' ');
                 if (parts.Length == 2)
                 {
                     firstname = parts[0];
                     surname = parts[1];
                 }
-                if (parts.Length == 1) {
+                if (parts.Length == 1)
+                {
                     firstname = parts[0];
                     surname = string.Empty;
                 }
@@ -45,7 +56,8 @@ namespace Project_Hardy.Models
                     parts = parts.Skip(1).ToArray();
                     surname = string.Join(" ", parts);
                 }
-           } }
+            }
+        }
 
         public void persist()
         {
@@ -112,7 +124,7 @@ namespace Project_Hardy.Models
                 "department = '" + department + "' AND " +
                 "phone = '" + phone + "' "
                 );
-            
+
             var res_check = DBWorker.query(sql_check);
             if (res_check.HasRows)
             {
