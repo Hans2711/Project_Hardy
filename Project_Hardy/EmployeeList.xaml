@@ -1,0 +1,49 @@
+﻿<Window x:Class="Project_Hardy.EmployeeList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:p = "clr-namespace:Project_Hardy.Properties"
+        xmlns:local="clr-namespace:Project_Hardy"
+        mc:Ignorable="d"
+        Title="{x:Static p:Resources.EmployeeList}" Height="500" Width="800" Activated="Window_Activated" Closing="Window_Closing">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <DataGrid Grid.Row="0" Grid.ColumnSpan="3" AutoGenerateColumns="false" x:Name="employeesDataGrid" IsReadOnly="true" VerticalAlignment="Top" FontSize="18" MouseRightButtonDown="employeesDataGrid_MouseRightButtonDown">
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="{x:Static p:Resources.Id}" Binding="{Binding id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static p:Resources.Firstname}" Binding="{Binding firstname}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static p:Resources.Surname}" Binding="{Binding surname}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static p:Resources.Department}" Binding="{Binding department}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static p:Resources.Phone}" Binding="{Binding phone}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button x:Name="newButton" Grid.Row="1" Click="newButton_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/addButton.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="editButton" Grid.Row="1" Grid.Column="1" Click="editButton_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/editButton.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="deleteButton" Grid.Row="1" Grid.Column="2" Click="deleteButton_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/deleteButton.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+
+    </Grid>
+</Window>

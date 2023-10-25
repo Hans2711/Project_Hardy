@@ -1,0 +1,54 @@
+﻿<Window x:Class="Project_Hardy.ProjectDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_Hardy"
+        xmlns:p = "clr-namespace:Project_Hardy.Properties"
+        mc:Ignorable="d"
+        Title="{x:Static p:Resources.ProjectDetails}" Height="650
+        " Width="550" ContentRendered="Window_ContentRendered" Closing="Window_Closing" Closed="Window_Closed">
+    <Grid Margin="30,0,30,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="0.4*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <Label HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" Content="{x:Static p:Resources.Description}"></Label>
+        <TextBox TextWrapping="Wrap" Text="{Binding description, Mode = TwoWay}" Grid.Column="1" VerticalAlignment="Center" FontSize="18" MinWidth="220" HorizontalAlignment="Right"/>
+
+        <Label Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" Content="{x:Static p:Resources.Starttime}" ></Label>
+        <TextBox Grid.Row="1" TextWrapping="Wrap" Text="{Binding starttime, Mode = TwoWay}" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="18" MinWidth="220" Width="200"/>
+
+        <Label Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" Content="{x:Static p:Resources.Endtime}"></Label>
+        <TextBox Grid.Row="2" TextWrapping="Wrap" Text="{Binding endtime, Mode = TwoWay}" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="18" MinWidth="220" Width="200"/>
+
+        <Label Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" Content="{x:Static p:Resources.ProjectManager}"></Label>
+        <TextBox Grid.Row="3" TextWrapping="Wrap" Text="{Binding project_manager.fullname, Mode = TwoWay}" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="18" MinWidth="220" Width="200"/>
+
+        <Button x:Name="validateStepsButton" Grid.Row="5" Padding="1,1,1,1" Margin="0,20,20,20" Content="{x:Static p:Resources.ValidateSteps}" FontSize="18" Click="validateStepsButton_Click" ></Button>
+        <Button x:Name="deleteStepButton" Grid.Row="5" Padding="1,1,1,1" Margin="20,20,0,20" Grid.Column="1" Content="{x:Static p:Resources.DeleteStep}" FontSize="18" Click="deleteStepButton_Click" ></Button>
+        
+        <DataGrid x:Name="stepsDataGrid" Grid.Row="6" Grid.RowSpan="2" Grid.ColumnSpan="2" AutoGenerateColumns="false" VerticalAlignment="Top" FontSize="18">
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="{x:Static p:Resources.Identifier}" Binding="{Binding identifier}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static p:Resources.Description}" Binding="{Binding description}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static p:Resources.Duration}" Binding="{Binding duration}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static p:Resources.PrevIdentifier}" Binding="{Binding prev_identifier}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <Button Grid.Column="0" Grid.Row="8" Click="Button_Click" FontSize="18" Content="{x:Static p:Resources.Close}" Padding="1,1,1,1" Margin="0,20,0,20" ></Button>
+    </Grid>
+</Window>
