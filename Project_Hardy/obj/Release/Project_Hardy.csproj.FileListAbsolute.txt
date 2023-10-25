@@ -39,3 +39,4 @@ C:\Users\diesi\source\repos\Project_Hardy\Project_Hardy\bin\Release\Project_Hard
 C:\Users\diesi\source\repos\Project_Hardy\Project_Hardy\bin\Release\Project_Hardy.application
 C:\Users\diesi\source\repos\Project_Hardy\Project_Hardy\obj\Release\Project_Hardy.exe.manifest
 C:\Users\diesi\source\repos\Project_Hardy\Project_Hardy\obj\Release\Project_Hardy.application
+C:\Users\diesi\source\repos\Project_Hardy\Project_Hardy\obj\Release\App.baml
