@@ -26,7 +26,7 @@ namespace Project_Hardy
     {
         public Project project { get; set; }
 
-        int totalWidthPixel = 350;
+        int totalWidthPixel = 620;
 
         int totalHeightPixel = 400;
 
@@ -49,6 +49,7 @@ namespace Project_Hardy
             if(project.getTotalStepDuration() == null) return;
 
             project.properlyOrderSteps();
+            Console.WriteLine(project.getTotalStepDuration());
 
             horizontalStepSize = totalWidthPixel / project.getTotalStepDuration();
             stepTotal = project.stepCount;
@@ -63,7 +64,6 @@ namespace Project_Hardy
             }
 
             setStepDescriptions();
-
             setRectagles();
         }
 

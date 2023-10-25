@@ -160,6 +160,15 @@ namespace Project_Hardy.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gantt Diagram.
+        /// </summary>
+        public static string GanttDiagram {
+            get {
+                return ResourceManager.GetString("GanttDiagram", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Homepage.
         /// </summary>
         public static string Homepage {

@@ -305,7 +305,11 @@ namespace Project_Hardy.Models
             int totalStepDuration = 0;
             foreach (var step in steps)
             {
-                totalStepDuration += step.duration;
+                int endDuration = step.duration + backtrackPrevDurations(step.prev_identifier);
+                if (endDuration > totalStepDuration)
+                {
+                    totalStepDuration = endDuration;
+                }
             }
             return totalStepDuration;
         }
@@ -330,7 +334,7 @@ namespace Project_Hardy.Models
             return total;
         }
 
-
+        public int maxTraceDuration = 0;
         public void properlyOrderSteps()
         {
             List<string> potentialStartingIdentifiers = new List<string>();
@@ -379,7 +383,6 @@ namespace Project_Hardy.Models
             }
            
             steps = newSteps;
-
         }
 
         private List<string> stepTrace = new List<string>();

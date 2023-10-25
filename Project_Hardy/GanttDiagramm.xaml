@@ -3,10 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Project_Hardy"
+        xmlns:local="clr-namespace:Project_Hardy"        
+        xmlns:p = "clr-namespace:Project_Hardy.Properties"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="GanttDiagramm" Height="500" Width="800" ContentRendered="Window_ContentRendered">
+        Title="{x:Static p:Resources.GanttDiagram}" Height="500" Width="800" ContentRendered="Window_ContentRendered">
     <Grid Height="500" Width="800">
         <Canvas x:Name="gdCanvas" Height="500" Width="800">
             <Line x:Name="yAchse" X2="150" Y2="490" StrokeThickness="2" Stroke="Black" X1="150"></Line>

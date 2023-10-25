@@ -150,6 +150,9 @@
   <data name="Firstname" xml:space="preserve">
     <value>Vorname</value>
   </data>
+  <data name="GanttDiagram" xml:space="preserve">
+    <value>Gantt Diagramm</value>
+  </data>
   <data name="Homepage" xml:space="preserve">
     <value>Startseite</value>
   </data>
