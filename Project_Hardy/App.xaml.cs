@@ -10,7 +10,7 @@ namespace Project_Hardy
     {
         public App()
         {
-            DBWorker.install("db2.db");
+            DBWorker.install("db.db");
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("de");
         }
     }
