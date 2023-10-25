@@ -67,14 +67,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Project_Hardy.exe" size="298952">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Project_Hardy.exe" size="301000">
       <assemblyIdentity name="Project_Hardy" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>NVWlpHD13HIy0+WTCI7vcxatvZdIfxXexpi7hbGvXr8=</dsig:DigestValue>
+        <dsig:DigestValue>R+VuLNbz+ipqiUDeOUlr/3gD6TpJq30ND5ZRshkNtpg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -86,7 +86,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>b1060gGnUIal/e10PVLpRvX2OtORgwA8h3KPMGJaKp4=</dsig:DigestValue>
+        <dsig:DigestValue>fHg6WHuK5L/USnuvyY3wftrVjUDJQBYWDoep4wOekRw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

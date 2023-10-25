@@ -22,13 +22,13 @@
         <Button x:Name="EmployeesButton" Content="{x:Static p:Resources.Employees}" FontSize="18" Margin="10,30,10,30" Click="EmployeesButton_Click" Grid.RowSpan="2"></Button>
         <Button Grid.Column="1" x:Name="ProjectsButton" Content="{x:Static p:Resources.Projects}" FontSize="18" Margin="10,30,10,30" Click="ProjectsButton_Click" Grid.RowSpan="2"></Button>
 
-        <Button x:Name="germanyButton" Grid.Row="1" Click="germanyButton_Click" Margin="0,77,0,0" Grid.RowSpan="2"  >
+        <Button x:Name="germanyButton" Template="{StaticResource NoMouseOverButtonTemplate}" Grid.Row="1" Click="germanyButton_Click" Margin="0,77,0,0" Grid.RowSpan="2"  >
             <Button.Background>
                 <ImageBrush ImageSource="/germany.png"/>
             </Button.Background>
         </Button>
 
-        <Button x:Name="englandButton" Grid.Row="1" Grid.Column="1" Click="englandButton_Click" Margin="0,77,0,0" Grid.RowSpan="2" >
+        <Button x:Name="englandButton" Template="{StaticResource NoMouseOverButtonTemplate}" Grid.Row="1" Grid.Column="1" Click="englandButton_Click" Margin="0,77,0,0" Grid.RowSpan="2" >
             <Button.Background>
                 <ImageBrush ImageSource="/england.png"/>
             </Button.Background>

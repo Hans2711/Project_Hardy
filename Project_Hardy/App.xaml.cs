@@ -1,5 +1,6 @@
 ﻿using Project_Hardy.Classes;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Project_Hardy
 {
@@ -12,6 +13,11 @@ namespace Project_Hardy
         {
             DBWorker.install("db.db");
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("de");
+        }
+
+        private void Border_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+
         }
     }
 }
