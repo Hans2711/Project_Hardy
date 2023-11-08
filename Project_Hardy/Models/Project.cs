@@ -66,6 +66,7 @@ namespace Project_Hardy.Models
 
             while (res.Read())
             {
+                updateProjectManager();
                 if (Convert.ToString(res["description"]) != this.description)
                 {
                     this.update("description", this.description);
@@ -109,7 +110,6 @@ namespace Project_Hardy.Models
                     step.persist(this.id);
                 }
 
-                updateProjectManager();
             }
         }
 
@@ -118,7 +118,6 @@ namespace Project_Hardy.Models
             int project_manager_id = 0;
             if (this.project_manager != null)
             {
-                Console.WriteLine("WDOAIJDOIASODJAJSDOA" + this.project_manager.fullname);
                 if (string.IsNullOrEmpty(this.project_manager.fullname))
                     return;
 
@@ -149,7 +148,6 @@ namespace Project_Hardy.Models
         private void insert()
         {
             int project_manager_id = 0;
-
 
             string sql = SQLBuilder.insert("project", "description, starttime, endtime, project_manager_id",
                 "'" + description + "', " + "" + TimestampUtility.toTimestamp(this.starttime) + ", " + TimestampUtility.toTimestamp(this.endtime) + ", " + project_manager_id + ""
@@ -268,6 +266,9 @@ namespace Project_Hardy.Models
 
             int project_manager_id = Convert.ToInt32(data["project_manager_id"]);
             e.project_manager = Employee.findById(project_manager_id);
+
+            if (e.project_manager == null)
+                e.project_manager = new Employee();
 
             string sql = stepsQuery(e.id);
             var res = DBWorker.query(sql);
