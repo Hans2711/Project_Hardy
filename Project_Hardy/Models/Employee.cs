@@ -145,6 +145,9 @@ namespace Project_Hardy.Models
         {
             string sql = SQLBuilder.deleteById("employee", this.id);
             DBWorker.query(sql);
+
+            sql = SQLBuilder.update("Project", "project_manager_id = null", "project_manager_id = " + this.id);
+            DBWorker.query(sql);
         }
 
         public void debugOutput()
