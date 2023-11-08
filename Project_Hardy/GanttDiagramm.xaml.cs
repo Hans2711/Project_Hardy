@@ -127,15 +127,18 @@ namespace Project_Hardy
                 line.StrokeThickness = 2;
                 line.Stroke = new SolidColorBrush(Colors.Black);
 
-                Label label = new Label();
-                label.Content = "" + i;
-
-                gdCanvas.Children.Add(label);
-                Canvas.SetTop(label, 420);
-                Canvas.SetLeft(label, startingPoint - 8);
-
-                line.Visibility = Visibility.Visible;
                 gdCanvas.Children.Add(line);
+                if (horizontalStepSize >= 16)
+                {
+                    Label label = new Label();
+                    label.Content = "" + i;
+
+                    gdCanvas.Children.Add(label);
+                    Canvas.SetTop(label, 420);
+                    Canvas.SetLeft(label, startingPoint - 8);
+
+                    line.Visibility = Visibility.Visible;
+                }
             }
         }
     }
